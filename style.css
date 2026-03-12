@@ -1,0 +1,1005 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+    background: #00ff41;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00cc33;
+    box-shadow: 0 0 10px #00ff41;
+}
+
+/* Matrix Canvas Background */
+#matrixCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* Three.js Canvas Background */
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Navigation - واضح جداً */
+.navbar {
+    background: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #00ff41;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    z-index: 1;
+}
+
+.navbar-brand {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: #fff !important;
+}
+
+.text-glow {
+    text-shadow: 0 0 10px #00ff41;
+}
+
+.nav-link {
+    color: #fff !important;
+    margin: 0 15px;
+    font-weight: 500;
+    position: relative;
+    background-color: #ff4444;
+    padding: 5px 0 !important;
+    z-index: 2;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00ff41;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #00ff41 !important;
+}
+
+/* Hero Section */
+#home {
+    height: 100vh;
+    position: relative;
+}
+
+.hero-title {
+    font-family: 'Share Tech Mono', monospace;
+    text-shadow: 0 0 20px #00ff41;
+}
+
+.profile-badge {
+    animation: glowPulse 2s infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* Stats */
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    min-width: 120px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.stat-number {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* Cyber Buttons */
+.cyber-btn {
+    padding: 15px 35px;
+    border: 2px solid #00ff41;
+    background: transparent;
+    color: #00ff41;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.cyber-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.cyber-btn:hover::before {
+    left: 100%;
+}
+
+.cyber-btn:hover {
+    background: #00ff41;
+    color: #0a0a0a;
+    box-shadow: 0 0 30px #00ff41;
+    transform: translateY(-2px);
+}
+
+.cyber-btn.outline {
+    border-color: #ff4444;
+    color: #ff4444;
+}
+
+.cyber-btn.outline:hover {
+    background: #ff4444;
+    color: #0a0a0a;
+    box-shadow: 0 0 30px #ff4444;
+}
+
+/* Service Cards */
+.service-card {
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(5px);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 30px 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ff41, transparent);
+    transition: left 0.5s ease;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 255, 65, 0.2);
+    border-color: #00ff41;
+}
+
+/* Timeline */
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    background: #00ff41;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #00ff41;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 32px;
+    bottom: -20px;
+    width: 2px;
+    background: linear-gradient(to bottom, #00ff41, transparent);
+}
+
+.timeline-item:last-child::before {
+    display: none;
+}
+
+/* Progress Bars */
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff41, #00cc33);
+    border-radius: 3px;
+    animation: progressFill 1.5s ease-out;
+}
+
+@keyframes progressFill {
+    from { width: 0; }
+    to { width: attr(width); }
+}
+
+/* Project Cards */
+.project-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 15px;
+    padding: 25px;
+    transition: 0.3s;
+    border-left: 4px solid #00ff41;
+    height: 100%;
+}
+
+.project-card:hover {
+    background: #1a1a1a;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+    transform: translateY(-5px);
+}
+
+.tags span {
+    background: #222;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    color: #00ff41;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.repo-link {
+    color: #00ff41;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.repo-link:hover {
+    border-bottom-color: #00ff41;
+    color: #00ff41;
+}
+
+/* Skills Grid */
+.skills-matrix .skill-item {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    color: #00ff41;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.skill-item:hover {
+    background: #00ff41;
+    color: #0a0a0a;
+    border-color: #00ff41;
+    box-shadow: 0 0 15px #00ff41;
+    transform: scale(1.05);
+}
+
+/* Activities Grid */
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.activity-item {
+    background: #1a1a1a;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.activity-item:hover {
+    border-color: #00ff41;
+    transform: translateY(-3px);
+}
+
+.activity-item i {
+    font-size: 2rem;
+}
+
+/* Social Icons */
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: 0.3s;
+    font-size: 1.2rem;
+}
+
+.social-icon:hover {
+    background: #00ff41;
+    color: #0a0a0a;
+    border-color: #00ff41;
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #00ff41;
+}
+
+/* Contact Form */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: #00ff41;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    outline: none;
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    z-index: 10;
+}
+
+.footer a {
+    transition: 0.3s;
+}
+
+.footer a:hover {
+    color: #00ff41 !important;
+    padding-left: 5px;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-20px);}
+    60% {transform: translateY(-10px);}
+}
+
+/* Section Titles */
+.section-title {
+    font-family: 'Share Tech Mono', monospace;
+    text-shadow: 3px 3px 0px rgba(0, 255, 65, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+    
+    .hero-title {
+        font-size: 3rem !important;
+    }
+    
+    .stats-container {
+        flex-wrap: wrap;
+    }
+    
+    .stat-item {
+        min-width: calc(50% - 20px);
+    }
+}
+
+/* حل مشكلة الناف بار */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+/* تصميم الفريم الخاص بالصورة */
+.hero-image-container {
+    position: relative;
+    padding: 20px;
+}
+
+.cyber-photo {
+    border: 2px solid #00ff41;
+   
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    transition: 0.5s;
+    position: relative;
+    z-index: 2;
+    clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+}
+
+.hero-image-container:hover .cyber-photo {
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.7);
+}
+
+.cyber-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    z-index: 1;
+    animation: frameRotate 10s linear infinite;
+}
+
+@keyframes frameRotate {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.05) rotate(2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Glitch Effect for Photo */
+.glitch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg, rgba(0,255,65,0.05) 0px, rgba(0,255,65,0.05) 1px, transparent 2px, transparent 4px);
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* تعديل الـ Buttons عشان تكون أقوى */
+.cyber-btn {
+    font-family: 'Share Tech Mono', monospace;
+    border-radius: 0 !important; /* شكل السايبر بيبقى حاد */
+}
+
+
+/* إجبار الناف بار على السيادة */
+.navbar {
+    background: rgba(0, 5, 0, 0.98) !important; /* سواد قاتم عشان الكلام يظهر */
+    border-bottom: 2px solid #00ff41 !important;
+    z-index: 9999999 !important; /* رقم مرعب عشان مفيش حاجة تغطيه */
+    position: fixed !important;
+    width: 100%;
+}
+
+/* تعديل الـ Wrapper */
+.content-wrapper {
+    position: relative;
+    z-index: 100; /* لازم يكون أعلى من الكانفاس */
+}
+
+/* الكانفاس لازم يفضل تحت خالص */
+#matrixCanvas, #bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10; /* نزلناهم تحت الأرض */
+    pointer-events: none;
+}
+
+/* الهيرو سيكشن الجديد */
+.hero-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.profile-img-pro {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    border: 3px solid #00ff41;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+    transition: 0.5s;
+}
+
+.profile-img-pro:hover {
+    transform: scale(1.02) rotate(1deg);
+    filter: drop-shadow(0 0 20px #00ff41);
+}
+
+
+/* Cyber HUD Container */
+#cyber-hud {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* عشان تقدر تدوس على اللي تحتها لو مفيش زرار */
+    z-index: 10000000; /* سيادة كاملة على الشاشة */
+}
+
+/* الأزرار على الشمال */
+.hud-left-nav {
+    position: absolute;
+    left: 40px;
+    top: 40%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    pointer-events: auto; /* فعل الضغط هنا */
+}
+
+.hud-item {
+    text-decoration: none;
+    color: rgba(0, 255, 65, 0.5);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+}
+
+.hud-item:hover, .hud-item.active {
+    color: #00ff41;
+    border-left: 3px solid #00ff41;
+    text-shadow: 0 0 15px #00ff41;
+    transform: translateX(10px);
+}
+
+.hud-num { font-size: 0.7rem; opacity: 0.6; }
+
+/* الجزء اللي على اليمين */
+.hud-right-status {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    text-align: right;
+    pointer-events: auto;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    color: #00ff41;
+    margin-bottom: 15px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    background: #00ff41;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff41;
+    animation: blink 1.5s infinite;
+}
+
+.hud-contact-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border: 1px solid #00ff41;
+    color: #00ff41;
+    text-decoration: none;
+    font-family: 'Share Tech Mono', monospace;
+    background: rgba(0, 255, 65, 0.1);
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.hud-contact-btn:hover {
+    background: #00ff41;
+    color: #000;
+    box-shadow: 0 0 30px #00ff41;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* تعديل للهاتف */
+@media (max-width: 991px) {
+    .hud-left-nav { left: 10px; font-size: 0.8rem; }
+    .hud-right-status { right: 10px; }
+}
+
+/* الحالة النشطة عند السكرول */
+.hud-item.active {
+    color: #00ff41 !important;
+    font-weight: 800 !important; /* Bold قوي */
+    border-left: 4px solid #00ff41 !important;
+    text-shadow: 0 0 20px #00ff41, 0 0 40px rgba(0, 255, 65, 0.5);
+    transform: translateX(15px);
+    background: rgba(0, 255, 65, 0.05);
+}
+
+.hud-item.active .hud-num {
+    opacity: 1;
+    color: #fff;
+}
+
+
+/* About Skills Tags */
+.skill-tag {
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    color: #00ff41;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-family: 'Share Tech Mono', monospace;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.skill-tag:hover {
+    background: #00ff41;
+    color: #000;
+    box-shadow: 0 0 15px #00ff41;
+}
+
+.about-card {
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    border-color: #00ff41;
+}
+
+.social-mini {
+    width: 35px;
+    height: 35px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.social-mini:hover {
+    background: #00ff41;
+    color: #000;
+    border-color: #00ff41;
+}
+
+/* Contact Specific */
+.contact-terminal {
+    background-image: radial-gradient(circle at top right, rgba(0,255,65,0.05), transparent);
+}
+
+
+/* Footer Custom Design */
+.footer {
+    background: linear-gradient(to bottom, #0a0a0a, #000) !important;
+}
+
+.footer-social-btn {
+    width: 35px;
+    height: 35px;
+    background: #111;
+    border: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-social-btn:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+    transform: translateY(-3px);
+}
+
+.sophia-branding-v2 {
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.sophia-branding-v2:hover {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.whatsapp-badge-footer {
+    background: #25d366;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.whatsapp-badge-footer:hover {
+    background: #fff;
+    color: #25d366;
+    box-shadow: 0 0 10px #25d366;
+}
+
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+
+
+/* ==================== GRAND FOOTER TRANSFORM ==================== */
+.footer {
+    background: #050505 !important;
+    position: relative;
+    border-top: 1px solid rgba(0, 255, 65, 0.2) !important;
+    box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.9);
+}
+
+/* خلفية تكنولوجية خفيفة */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(circle at 2px 2px, rgba(0, 255, 65, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* عناوين الأقسام */
+.footer h4 {
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.footer h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; width: 30px; height: 2px;
+    background: #00ff41;
+    box-shadow: 0 0 10px #00ff41;
+}
+
+/* الـ Arsenal Tags بشكل احترافي */
+.arsenal-grid-large {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.arsenal-tag-pro {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    font-size: 0.85rem;
+    color: #777;
+    font-family: 'Share Tech Mono', monospace;
+    transition: 0.4s all ease;
+    text-align: center;
+    position: relative;
+}
+
+.arsenal-tag-pro:hover {
+    color: #00ff41;
+    background: rgba(0, 255, 65, 0.08);
+    border-color: #00ff41;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+    transform: scale(1.05);
+}
+
+/* روابط التواصل */
+.contact-footer-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #999 !important;
+    text-decoration: none !important;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.contact-footer-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff !important;
+    padding-left: 20px;
+}
+
+.contact-footer-link i {
+    font-size: 1.2rem;
+    color: #00ff41;
+    filter: drop-shadow(0 0 5px #00ff41);
+}
+
+/* أيقونات السوشيال الدائرية */
+.social-circle-btn {
+    width: 50px;
+    height: 50px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+    transition: 0.4s;
+}
+
+.social-circle-btn:hover {
+    background: #ffffff;
+    color: #000;
+    box-shadow: 0 0 25px #ffffff;
+    transform: translateY(-5px);
+}
+
+/* Sophia Tech Branding - بروفيشنال جداً */
+.sophia-tech-v3 {
+    background: rgba(0, 123, 255, 0.05);
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    padding: 15px 25px;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 2px;
+}
+
+.sophia-link {
+    background: #00ff41;;
+    color: #000000 !important;
+    padding: 8px 15px;
+    border-radius: 18px;
+    font-weight: bold;
+    font-family: 'Share Tech Mono', monospace;
+    text-decoration: none !important;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+    transition: 0.3s;
+}
+
+.sophia-link:hover {
+    background: #007e1f;;
+    color: #000000 !important;
+    padding: 8px 15px;
+    border-radius: 18px;
+    font-weight: bold;
+    font-family: 'Share Tech Mono', monospace;
+    text-decoration: none !important;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+    transition: 0.3s;
+}
+
+
+/* WhatsApp - أقصى اليمين */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px; /* اليمين */
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    z-index: 10000000;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none !important;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 0 30px #25d366;
+}
+
+/* Scroll Up - أقصى الشمال */
+.scroll-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* الشمال */
+    width: 55px;
+    height: 55px;
+    background: #111;
+    border: 2px solid #00ff41;
+    color: #00ff41;
+    border-radius: 50%;
+    display: none; /* هيظهر بالـ JS */
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 10000000;
+    cursor: pointer;
+    transition: 0.4s;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+.scroll-btn:hover {
+    background: #00ff41;
+    color: #000;
+    box-shadow: 0 0 30px #00ff41;
+    transform: translateY(-5px);
+}
+
+/* Pulse Animation for WhatsApp */
+.pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #25d366;
+    border-radius: 50%;
+    animation: pulseIcon 2s infinite;
+}
+
+@keyframes pulseIcon {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
