@@ -1003,3 +1003,416 @@ body {
     0% { transform: scale(1); opacity: 1; }
     100% { transform: scale(1.6); opacity: 0; }
 }
+
+
+/* ==================== GLOBAL FIX (لإلغاء الهزة والعرض الزايد) ==================== */
+html, body {
+    max-width: 100vw !important;
+    overflow-x: hidden !important; /* ده اللي هيمنع الشاشة تروح يمين وشمال */
+    position: relative;
+}
+
+.content-wrapper {
+    overflow-x: hidden !important;
+    width: 100%;
+}
+
+/* ==================== RESPONSIVE OVERHAUL (MOBILE & TABLET) ==================== */
+/* زرار القائمة العائم للموبايل */
+#mobile-hud-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    background: rgba(5, 5, 5, 0.95);
+    border: 1px solid #00ff41;
+    color: #00ff41;
+    z-index: 10000001;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    transition: 0.3s;
+}
+
+#mobile-hud-toggle:active {
+    transform: scale(0.9);
+    background: #00ff41;
+    color: #000;
+}
+
+/* زرار الإغلاق جوه القائمة */
+#hud-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: 1px solid #ff4444;
+    color: #ff4444;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    z-index: 10000002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 991px) {
+    /* 1. تظبيط المساحات لكل السكاشن */
+    section {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* 2. تصغير الخطوط عشان التناسق */
+    .display-2 { font-size: 2.2rem !important; line-height: 1.2; }
+    .display-6 { font-size: 1.8rem !important; }
+    .section-title { font-size: 2rem !important; }
+    .text-3xl { font-size: 1.5rem !important; }
+    p { font-size: 0.9rem !important; line-height: 1.6; }
+
+    /* 3. الهيرو سيكشن (تظبيط الصورة والنص) */
+    #home {
+        padding-top: 6rem !important; /* مساحة عشان زرار المنيو */
+        text-align: center;
+        min-height: auto;
+    }
+    
+    .terminal-header {
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+    }
+    
+    .terminal-header span { margin-left: 0 !important; }
+
+    .cv-description {
+        padding: 1.5rem !important;
+        border-left: none;
+        border-top: 3px solid #00ff41;
+    }
+
+    .badge {
+        font-size: 0.7rem !important;
+        padding: 6px 10px !important;
+        margin-bottom: 5px;
+    }
+
+    .profile-container-pro {
+        margin-top: 2rem;
+        transform: scale(0.9); /* تصغير الصورة عشان متضربش العرض */
+    }
+
+    /* 4. تصميم القائمة الجانبية (Sidebar) */
+    #cyber-hud {
+        background: rgba(5, 5, 10, 0.98) !important;
+        width: 280px; /* القائمة هتاخد جزء من الشاشة بس مش كلها */
+        border-right: 1px solid #00ff41;
+        box-shadow: 5px 0 25px rgba(0,255,65,0.2);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        pointer-events: auto;
+    }
+    
+    .hud-collapsed {
+        transform: translateX(-100%);
+    }
+    
+    .hud-left-nav {
+        padding: 80px 20px;
+        width: 100%;
+    }
+    
+    .hud-item {
+        font-size: 1.1rem;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+    }
+
+    /* 5. تظبيط كروت الخدمات والخبرات */
+    .service-card, .project-card, .about-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-content { padding: 1rem !important; }
+    
+    /* 6. الفوتر والمهارات (Arsenal) */
+    .arsenal-grid-large {
+        grid-template-columns: repeat(2, 1fr); /* عمودين صغيرين للموبايل */
+        gap: 8px;
+    }
+    
+    .arsenal-tag-pro {
+        padding: 8px;
+        font-size: 0.7rem;
+    }
+
+    /* إخفاء النص الطويل اللي بيبوظ عرض الفوتر */
+    .footer .absolute.font-mono { display: none; }
+    
+    .sophia-tech-v3 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 0 0 0;
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+    }
+
+    /* 7. الأزرار العائمة (واتساب وسكرول) - مسافات صحيحة */
+    .whatsapp-btn, .scroll-btn {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.5rem !important;
+        bottom: 20px !important;
+    }
+    
+    .whatsapp-btn { right: 20px !important; }
+    .scroll-btn { left: 20px !important; font-size: 1.2rem !important; }
+
+    /* تظبيط أزرار الهيرو */
+    .d-flex.gap-3 {
+        flex-direction: column;
+        width: 100%;
+    }
+    .cyber-btn-v3 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ==================== GLOBAL OVERFLOW FIX (إنهاء مشكلة العرض الزايد) ==================== */
+html, body {
+    max-width: 100vw !important;
+    overflow-x: hidden !important; /* ده اللي هيقفل الشاشة ويمنعها تروح يمين وشمال */
+    position: relative;
+    width: 100%;
+}
+
+.content-wrapper {
+    overflow-x: hidden !important;
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* ==================== SMART MOBILE OVERHAUL (الهواتف والتابلت) ==================== */
+@media (max-width: 991px) {
+    
+    /* 1. تحويل الـ HUD لشريط علوي احترافي قابل للسحب (Scrollable Top Bar) */
+    #cyber-hud {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 65px;
+        background: rgba(5, 5, 10, 0.98) !important;
+        border-bottom: 2px solid #00ff41;
+        z-index: 10000000;
+        display: flex;
+        align-items: center;
+        backdrop-filter: blur(10px);
+    }
+    
+    .hud-left-nav {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto; /* يسمح بسحب القائمة يمين وشمال */
+        width: 100%;
+        padding: 0 15px;
+        gap: 20px;
+        scrollbar-width: none; /* إخفاء شريط التمرير لشكل أنضف */
+    }
+    
+    .hud-left-nav::-webkit-scrollbar { display: none; }
+    
+    .hud-item {
+        font-size: 0.95rem;
+        white-space: nowrap; /* منع الكلمة من النزول لسطرين */
+        padding: 10px 5px;
+        border-left: none !important;
+        border-bottom: 2px solid transparent;
+        flex-direction: row;
+        gap: 5px;
+    }
+    
+    .hud-item.active {
+        transform: none !important;
+        border-bottom: 2px solid #00ff41 !important;
+        background: transparent !important;
+    }
+    
+    .hud-right-status { display: none !important; } /* إخفاء الجزء اليمين لعدم الزحمة */
+
+    /* 2. إصلاح اشتباك وتداخل الـ Hero Section */
+    #home {
+        padding-top: 100px !important; /* إبعاد المحتوى عن الناف بار */
+        padding-bottom: 40px !important;
+        height: auto !important;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left !important;
+    }
+
+    #home .row {
+        flex-direction: column; /* إجبار الصورة والنص يبقوا تحت بعض */
+    }
+
+    .terminal-header {
+        display: flex;
+        flex-direction: column; /* فصل العنوان والمكان تحت بعض */
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .terminal-header span { margin-left: 0 !important; }
+
+    h1.display-2 {
+        font-size: 2.2rem !important; /* تصغير الخط عشان ميكسرش الشاشة */
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+    }
+
+    h2.h3 { font-size: 1.1rem !important; line-height: 1.5 !important; }
+
+    .cv-description {
+        padding: 15px !important;
+        border-left: 3px solid #00ff41 !important;
+        border-top: none !important;
+        margin-bottom: 25px !important;
+    }
+
+    .cv-description p { font-size: 0.95rem !important; line-height: 1.6 !important; }
+
+    /* رص الهاشتاجات تحت بعض بمسطرة */
+    .cv-description .mt-3.d-flex {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+    }
+
+    /* أزرار الهيرو عرض كامل */
+    #home .d-flex.gap-3 {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    .cyber-btn-v3 {
+        width: 100% !important;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    /* إصلاح مقاسات ومكان الصورة */
+    .profile-container-pro {
+        margin-top: 2rem;
+        transform: scale(0.9);
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .profile-img-main {
+        max-width: 260px !important;
+        height: auto !important;
+    }
+
+    /* 3. تظبيط مسافات السكاشن (عشان متبقاش لازقة في حواف الموبايل) */
+    section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        overflow: hidden; /* تأمين إضافي */
+    }
+
+    .section-title { font-size: 2rem !important; text-align: center; }
+    .text-center.mb-12 { margin-bottom: 30px !important; }
+
+    /* 4. رص الكروت كلها (خدمات، مشاريع، خبرات) */
+    .service-card, .project-card, .about-card, .cert-card, .contact-terminal {
+        padding: 20px 15px !important;
+        margin-bottom: 15px !important;
+        width: 100% !important;
+        max-width: 100%;
+    }
+
+    /* 5. شبكة المهارات (Arsenal) */
+    .arsenal-grid-large, .skills-matrix, .activities-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* عمودين فقط بدل 3 أو 4 */
+        gap: 10px !important;
+    }
+
+    .arsenal-tag-pro { padding: 8px 5px !important; font-size: 0.75rem !important; }
+
+    /* 6. إصلاح سيكشن التواصل (Contact) */
+    .contact-methods .d-flex {
+        flex-direction: column !important; /* الأيقونة فوق النص */
+        align-items: center !important;
+        text-align: center;
+        gap: 10px !important;
+        padding: 15px !important;
+    }
+
+    .contact-methods p { font-size: 0.95rem !important; word-break: break-all; }
+
+    .cyber-form-v3 .row.g-4 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cyber-form-v3 input, .cyber-form-v3 textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* 7. إصلاح الفوتر (الختام) */
+    #footer { text-align: center; padding-top: 50px !important; }
+    
+    .contact-footer-link { justify-content: center; font-size: 0.9rem !important; }
+    
+    #footer .d-flex.gap-3 { justify-content: center; }
+    
+    .sophia-tech-v3 {
+        flex-direction: column;
+        align-items: center;
+        border-left: none;
+        padding: 20px 0 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+    }
+    
+    .sophia-tech-v3 .text-end { text-align: center !important; margin-bottom: 15px; }
+
+    /* 8. الأزرار العائمة (واتساب وسكرول) */
+    .whatsapp-btn {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.5rem !important;
+        right: 15px !important;
+        bottom: 15px !important;
+    }
+    
+    .scroll-btn {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.1rem !important;
+        left: 15px !important;
+        bottom: 15px !important;
+    }
+}
