@@ -713,27 +713,35 @@
             </div>
 
             <div class="col-lg-7" data-aos="fade-left">
-                <div class="p-5 border border-gray-800 bg-black/20 backdrop-blur-sm">
-                    <form class="cyber-form-v3">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <label class="text-green-500 font-mono text-lg mb-2">NAME</label>
-                                <input type="text" class="form-control bg-transparent border-gray-700 text-white p-3 rounded-0 focus:border-green-500 shadow-none" placeholder="Name">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="text-green-500 font-mono text-lg mb-2">EMAIL</label>
-                                <input type="email" class="form-control bg-transparent border-gray-700 text-white p-3 rounded-0 focus:border-green-500 shadow-none" placeholder="Email">
-                            </div>
-                            <div class="col-12">
-                                <label class="text-green-500 font-mono text-lg mb-2">MISSION_DETAILS</label>
-                                <textarea rows="6" class="form-control bg-transparent border-gray-700 text-white p-3 rounded-0 focus:border-green-500 shadow-none" placeholder="Transmission Data..."></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="w-100 cyber-btn-v3 py-3 font-mono fw-bold" style="background-color: #00ff40d3; color: #0a0a0a;">EXECUTE_SENDING <i class="fas fa-paper-plane ms-2"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                  <div class="cyber-form-wrapper p-4 p-md-5">
+                      <form id="cyberForm" class="cyber-form-v3">
+                          <div class="row g-4">
+                        
+                              <div class="col-md-6">
+                                  <label class="cyber-label mb-2"><span class="text-success">></span> YOUR_NAME_</label>
+                                  <input type="text" id="cyberName" class="form-control cyber-input" placeholder="Enter your name..." required>
+                              </div>
+                          
+                              <div class="col-md-6">
+                                  <label class="cyber-label mb-2"><span class="text-success">></span> YOUR_EMAIL_</label>
+                                  <input type="email" id="cyberEmail" class="form-control cyber-input" placeholder="Enter your email..." required>
+                              </div>
+                          
+                              <div class="col-12">
+                                  <label class="cyber-label mb-2"><span class="text-success">></span> MISSION_DETAILS_</label>
+                                  <textarea id="cyberMessage" rows="6" class="form-control cyber-input" placeholder="Enter your mission details..." required></textarea>
+                              </div>
+                          
+                              <div class="col-12 mt-4">
+                                  <button type="submit" class="w-100 cyber-btn-execute py-3" id="cyberSubmitBtn">
+                                      <span class="btn-text">SENDING_WHATSAPP</span> 
+                                      <i class="fa-brands fa-whatsapp ms-2"></i>
+                                  </button>
+                              </div>
+                          
+                          </div>
+                      </form>
+                  </div>
             </div>
         </div>
     </div>
