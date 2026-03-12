@@ -291,4 +291,56 @@ hudItems.forEach(item => {
         }
     });
 });
+
+});
+
+/* ===================================================
+   نظام إرسال فورم السايبر سيكيوريتي (النسخة النهائية المستقرة)
+   =================================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const cyberForm = document.getElementById("cyberForm");
+
+    if (cyberForm) {
+        cyberForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // منع ريفريش الصفحة
+
+            // 1. سحب البيانات من الحقول
+            const name = document.getElementById("cyberName").value.trim();
+            const email = document.getElementById("cyberEmail").value.trim();
+            const message = document.getElementById("cyberMessage").value.trim();
+
+            // 2. تصميم رسالة الواتساب
+            let waMessage = `*⚠️ SYSTEM ALERT: SECURE TRANSMISSION ⚠️*\n\n`;
+            waMessage += `👤 *AGENT:* ${name}\n`;
+            waMessage += `📧 *CONTACT:* ${email}\n`;
+            waMessage += `------------------------\n`;
+            waMessage += `📝 *MISSION DATA:*\n${message}\n`;
+            waMessage += `------------------------\n`;
+            waMessage += `*STATUS: AWAITING RESPONSE_ 🟩*`;
+
+            // 3. رقم الواتساب (حط رقمك إنت الأول جرب بيه عشان تتأكد)
+            const targetNumber = "201205449113"; 
+
+            // 4. تشفير الرسالة واستخدام الرابط الرسمي المستقر
+            const encodedMessage = encodeURIComponent(waMessage);
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodedMessage}`;
+
+            // 5. تأثير على الزرار (جاري التشفير)
+            const submitBtn = document.getElementById("cyberSubmitBtn");
+            const originalHTML = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = `[ ENCRYPTING... ] <i class="fa-solid fa-circle-notch fa-spin ms-2"></i>`;
+            submitBtn.disabled = true;
+
+            // 6. فتح الواتساب مباشرة
+            window.open(whatsappUrl, "_blank");
+
+            // 7. إرجاع الزرار لشكله الطبيعي
+            setTimeout(() => {
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+                cyberForm.reset(); 
+            }, 1000);
+        });
+    }
 });
