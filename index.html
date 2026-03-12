@@ -28,18 +28,25 @@
     <!-- Main Content -->
     <div class="content-wrapper">
         <!-- Navigation بار - خفيف وواضح -->
-  <div id="cyber-hud">
+  <button id="mobile-hud-toggle" class="d-lg-none">
+    <i class="fas fa-bars"></i>
+</button>
+
+<div id="cyber-hud" class="hud-collapsed">
+    <button id="mobile-hud-toggle" class="d-lg-none">
+    <i class="fas fa-bars"></i>
+    </button>
+
     <div class="hud-left-nav">
         <a href="#home" class="hud-item active"><span class="hud-num">01</span> <span class="hud-text">HOME</span></a>
         <a href="#services" class="hud-item"><span class="hud-num">02</span> <span class="hud-text">SERVICES</span></a>
-        <a href="#experience" class="hud-item"><span class="hud-num">04</span> <span class="hud-text">EXPERIENCE</span></a>
-        <a href="#projects" class="hud-item"><span class="hud-num">03</span> <span class="hud-text">PROJECTS</span></a>
+        <a href="#experience" class="hud-item"><span class="hud-num">03</span> <span class="hud-text">EXPERIENCE</span></a>
+        <a href="#projects" class="hud-item"><span class="hud-num">04</span> <span class="hud-text">PROJECTS</span></a>
         <a href="#about" class="hud-item"><span class="hud-num">05</span> <span class="hud-text">ABOUT_ME</span></a>
         <a href="#contact" class="hud-item"><span class="hud-num">06</span> <span class="hud-text">CONTACT</span></a>
     </div>
 
-    <div class="hud-right-status">
-        <div class="status-indicator">
+    <div class="hud-right-status d-none d-lg-block"> <div class="status-indicator">
             <span class="status-dot"></span>
             <span class="status-label">MINA_SAFWAT: ALWAYS AVAILABLE</span>
         </div>
