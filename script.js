@@ -260,4 +260,35 @@ scrollTopBtn.addEventListener("click", () => {
         behavior: "smooth"
     });
 });
+
+
+const mobileToggleBtn = document.getElementById('mobile-hud-toggle');
+const cyberHud = document.getElementById('cyber-hud');
+const hudItems = document.querySelectorAll('.hud-item');
+
+if(mobileToggleBtn) {
+    mobileToggleBtn.addEventListener('click', () => {
+        cyberHud.classList.toggle('hud-collapsed');
+        // تغيير أيقونة الهامبرجر لعلامة X والعكس
+        const icon = mobileToggleBtn.querySelector('i');
+        if(cyberHud.classList.contains('hud-collapsed')){
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        } else {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        }
+    });
+}
+
+// قفل القائمة أوتوماتيك لما تختار سيكشن
+hudItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if(window.innerWidth <= 991) {
+            cyberHud.classList.add('hud-collapsed');
+            mobileToggleBtn.querySelector('i').classList.remove('fa-times');
+            mobileToggleBtn.querySelector('i').classList.add('fa-bars');
+        }
+    });
+});
 });
